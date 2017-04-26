@@ -1,8 +1,5 @@
 <template>
   <header class="myHeader">
-    <div class="circle">
-      WMS Guide
-    </div>
     <ul class="menu">
       <li v-for="link in links">
         <a :href="link.href">
@@ -24,9 +21,6 @@
 <style lang="sass" rel="stylesheet/scss" scoped>
 
   header.myHeader {
-    .circle {
-      width: 60px;
-    }
     ul {
       float: right;
       margin: 0;
@@ -37,6 +31,10 @@
         a {
           color: #2c3e50;
           &:hover {
+            text-decoration: none;
+            border-bottom: 2px solid #42b983;
+          }
+          &:active {
             text-decoration: none;
             border-bottom: 2px solid #42b983;
           }

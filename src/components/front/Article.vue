@@ -1,14 +1,36 @@
 <template>
-  <main class="wrap">
+  <main class="wrap wrap-article">
     <my-header></my-header>
+
+    <aside class="sideMenu">
+      <menu class="navigation">
+        <ul>
+          <router-link :to="{path:'/index'}" tag="li">
+            <i class="fa fa-list-ul fa-fw"></i>
+            <span>Transfer</span>
+          </router-link>
+          <router-link :to="{name:'articles'}" tag="li">
+            <i class="fa fa-list-ul fa-fw"></i>
+            <span>Pick</span>
+          </router-link>
+          <router-link :to="{name:'links'}" tag="li">
+            <i class="fa fa-list-ul fa-fw"></i>
+            <span>Ship</span>
+          </router-link>
+          <router-link :to="{name:'account'}" tag="li">
+            <i class="fa fa-list-ul fa-fw"></i>
+            <span>Receive</span>
+          </router-link>
+        </ul>
+      </menu>
+    </aside>
     <section class="article">
       <article class="block">
         <div class="title">{{article.title}}</div>
-        <div class="info">{{article.date |toDate}}</div>
         <div class="content" v-html="article.content"></div>
       </article>
     </section>
-    <my-footer></my-footer>
+
   </main>
 </template>
 <script>
@@ -16,7 +38,6 @@
   import marked       from '../../assets/js/marked.min'
   import hljs         from '../../assets/js/highlight.pack'
   import MyHeader     from './MyHeader.vue'
-  import MyFooter     from './MyFooter.vue'
 
   export default{
     created(){
@@ -42,7 +63,7 @@
         return state.article
       }
     }),
-    components: {MyHeader, MyFooter},
+    components: {MyHeader},
     watch: {
       '$route': ['fetchData', 'highlight']
     }
@@ -51,7 +72,44 @@
 
 <style lang="sass" rel="stylesheet/scss">
   @import "../../style/variables";
-
+  .wrap-article{
+    height:100%;
+  }
+  aside.sideMenu {
+    box-sizing: border-box;
+    margin-top: -55px;
+    float: left;
+    height: calc(100% - 76px);
+    width: 200px;
+    margin-right: 40px;
+    background: #eff8ff;
+    menu {
+      margin: 20px 0;
+      padding: 0;
+      ul {
+        padding: 0 20px 0 50px;
+        > li {
+          transition: all 0.4s;
+          margin-top: 10px;
+          padding-left: 4px;
+          cursor: pointer;
+          height: 40px;
+          line-height: 40px;
+          > span {
+            display: inline-block;
+            margin-left: 20px;
+          }
+          &:hover {
+            color: #42b983;
+          }
+        }
+      }
+    }
+  }
+  section{
+    width: calc(100% - 240px);
+    float: left;
+  }
   .wrap {
     min-height: 100%;
     position: relative;

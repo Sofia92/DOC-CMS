@@ -1,10 +1,8 @@
 <template>
   <section class="editor">
-    <div>
-      <input class="title"
-             placeholder="标题"
-             v-model="title">
-    </div>
+    <div class="form-group"><input class="title"
+                                   placeholder="标题"
+                                   v-model="title"></div>
     <div :class="inspected?'inspect':'edit'">
       <textarea v-model="content" spellcheck="false"></textarea>
       <button class="toggle"
@@ -63,7 +61,7 @@
         get(){
           this.markedContent = marked(
             this.$store.state.article.content || '',
-            {sanitize: true}
+            {sanitize: true, smartLists: true, gfm:true, tables:true, breaks: true, smartypants:true, pedantic: true}
           )
           this.highlight()
           return this.$store.state.article.content
@@ -92,14 +90,11 @@
       text-align: center;
       box-sizing: border-box;
       padding: 10px;
-      margin: 0 auto 20px;
-      width: 94%;
+      margin: 0 auto;
       height: 50px;
       display: block;
       font-size: 30px;
       color: $black1;
-      border: 1px solid #ccc;
-      border-radius: 8px;
     }
     textarea, button, article {
       box-sizing: border-box;

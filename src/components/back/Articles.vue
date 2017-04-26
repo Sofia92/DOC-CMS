@@ -62,30 +62,13 @@
       top: 150px;
       width: 60%;
       tr {
-        height: 50px;
         th {
           font-weight: normal;
           cursor: pointer;
-          &:first-of-type {
-            width: 40%;
-            min-width: 40px;
-          }
-          &:nth-of-type(2) {
-            width: 30%;
-            min-width: 200px;
-          }
-          &:last-of-type {
-            width: 30%;
-            min-width: 100px;
-            cursor: default;
-          }
         }
         td:first-of-type {
           color: $green1;
           cursor: pointer;
-        }
-        td:nth-of-type(2), td:nth-of-type(3) {
-          text-align: center;
         }
         td i {
           color: $green2;
