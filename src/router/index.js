@@ -14,11 +14,11 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-    {path: '/archive', name: 'archive', component: Archive},
+    {path: '/index', name: 'archive', component: Archive},
     {path: '/article', name: 'article', component: Article},
     {path: '/', component: Login},
     {
-      path: '/console',
+      path: '/admin',
       component: Console,
       children: [
         {path: '', component: Articles},

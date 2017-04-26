@@ -7,7 +7,7 @@
       </div>
       <menu class="navigation">
         <ul>
-          <router-link :to="{path:'/archive'}" tag="li">
+          <router-link :to="{path:'/index'}" tag="li">
             <i class="fa fa-star fa-fw"></i>
             <span>总览</span>
           </router-link>

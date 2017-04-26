@@ -1,17 +1,6 @@
 
-> A Blog CMS Powered By Vue.js
-
 > 一个前端基于Vue.js，后端基于Node.js的博客内容管理器
 
-> 此分支是Vue2.0版 [1.0版](https://github.com/ycwalker/CMS-of-Blog/tree/vue1.0)
-
-### [Demo](http://115.28.90.175/)
-
-## Features
-
-* 支持MarkDown编辑
-* 支持代码高亮
-* 博客页面对移动端优化
 
 ###### 前端：Vue.js2.0
 * Vue.js
@@ -34,7 +23,7 @@
 ```
 │  .babelrc           babel配置
 │  .editorconfig
-│  .eslintignore  
+│  .eslintignore
 │  .eslintrc.js       eslintrc配置
 │  .gitignore
 │  index.html         入口页面
@@ -44,7 +33,7 @@
 │  webpack.config.js  webpack配置
 │
 ├─dist                打包生成
-│     
+│
 ├─server              服务端
 │      api.js         Restful接口
 │      db.js          数据库
@@ -59,7 +48,7 @@
     │  ├─css
     │  ├─fonts
     │  ├─img
-    │  └─js         
+    │  └─js
     │
     ├─components      vue组件
     │  ├─back         博客控制台组件
@@ -121,18 +110,3 @@ npm run lint
 ##### Notice
 * server目录下的init.json，初始化数据放在该文件中。
 * 推荐[MongoChef](http://3t.io/mongochef/)作为mongoDB可视化管理工具
-
-## Todo
-
-* [ ] 移动端适配
-  * [x] 博客前台页面
-  * [ ] 博客内容管理
-* [ ] Vue2.0服务端渲染(SSR)
-* [ ] 博客内容相关
-  * [ ] 博客统计
-  * [ ] 主题设置
-  * [x] 密码修改
-  * [ ] 博客简介主页
-
-## Licence
-MIT

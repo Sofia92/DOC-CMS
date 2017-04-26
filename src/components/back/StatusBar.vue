@@ -1,6 +1,6 @@
 <template>
   <header class="statusBar">
-    <router-link :to="{path:'/archive'}"
+    <router-link :to="{path:'/index'}"
                  tag="button"
                  class="home">
       <i class="fa fa-fire fa-2x"></i>

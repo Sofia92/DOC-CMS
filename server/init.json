@@ -16,15 +16,5 @@
     "title": "Hello Galaxy",
     "date": "2015/9/20",
     "content": "你好，银河系!"
-  },
-  {
-    "type": "Link",
-    "name": "GITHUB",
-    "href": "https://www.github.com"
-  },
-  {
-    "type": "Link",
-    "name": "VUE",
-    "href": "http://rc.vuejs.org/"
   }
 ]

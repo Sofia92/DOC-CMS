@@ -4,7 +4,6 @@ import {mapState}   from 'vuex'
 
 import Spinner      from './components/share/Spinner.vue'
 import Toast        from './components/share/Toast.vue'
-import MyCanvas     from './components/share/MyCanvas.vue'
 
 import store        from './store'
 import router       from './router'
@@ -23,6 +22,6 @@ Vue.filter('toDate', date => {
 new Vue({
   router,
   store,
-  components: {Spinner, Toast, MyCanvas},
+  components: {Spinner, Toast},
   computed: mapState(['isLoading', 'isToasting'])
-}).$mount('#CMS2')
+}).$mount('#WMSGuide')
