@@ -3,6 +3,10 @@
   "description": "CMS of WMS Guide, Powered by Vue2.0",
   "version": "2.1.1",
   "author": "sofia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sofia92/DOC-CMS.git"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
