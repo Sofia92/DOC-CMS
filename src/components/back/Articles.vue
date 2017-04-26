@@ -1,33 +1,31 @@
 <template>
   <section class="articles">
-    <router-link :to="{name:'editor'}"
+    <router-link class="text-right" :to="{name:'editor'}"
                  tag="button">新增文章
     </router-link>
-    <table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="text-left">标题</th>
+          <th class="text-center">选项</th>
+        </tr>
+      </thead>
       <tbody>
-      <tr>
-        <th>标题</th>
-        <th>日期</th>
-        <th>选项</th>
-      </tr>
-      <tr v-for="(article,index) in articles">
-        <router-link :to="{name:'article',query:{id:article._id}}"
-                     tag="td">
-          {{article.title}}
-        </router-link>
-        <td>
-          {{article.date | toDate}}
-        </td>
-        <td>
-          <router-link class="fa fa-pencil-square-o"
-                       :to="{name:'editor',query:{id:article._id}}"
-                       tag="i">
-          </router-link>
-          <i class="fa fa-trash"
-             @click="deleteArticle(article._id)">
-          </i>
-        </td>
-      </tr>
+        <tr v-for="(article,index) in articles">
+            <router-link :to="{name:'article',query:{id:article._id}}"
+                         tag="td">
+              {{article.title}}
+            </router-link>
+          <td class="text-center">
+            <router-link class="fa fa-pencil-square-o"
+                         :to="{name:'editor',query:{id:article._id}}"
+                         tag="i">
+            </router-link>
+            <i class="fa fa-trash"
+               @click="deleteArticle(article._id)">
+            </i>
+          </td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -50,7 +48,7 @@
     button {
       @include center();
       position: relative;
-      width: 200px;
+      width: 240px;
       height: 60px;
       margin: 30px 0;
       font-size: 20px;

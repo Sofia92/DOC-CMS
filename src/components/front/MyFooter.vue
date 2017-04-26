@@ -1,10 +1,7 @@
 <template>
   <footer>
-    <div class="copyright">
-      &copy;2015-2016 Lei Jiang, ycwalker@outlook.com
-    </div>
     <router-link :to="{path:'/'}" class="login" tag="div">
-      站长登陆
+      Admin登陆
     </router-link>
   </footer>
 </template>

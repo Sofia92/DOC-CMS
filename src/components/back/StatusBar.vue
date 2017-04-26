@@ -3,7 +3,7 @@
     <router-link :to="{path:'/index'}"
                  tag="button"
                  class="home">
-      <i class="fa fa-fire fa-2x"></i>
+      <img src="../../assets/img/logo.png" alt="logo">
     </router-link>
     <div class="user">
       <span>
@@ -47,9 +47,13 @@
   header.statusBar {
     height: $headerHeight;
     z-index: 1;
+    box-shadow: 0 0 1px rgba(0,0,0,0.25);
     .home {
-      width: 200px;
+      width: auto;
       height: $headerHeight;
+      img{
+        height: $headerHeight;
+      }
     }
     .user {
       height: $headerHeight;

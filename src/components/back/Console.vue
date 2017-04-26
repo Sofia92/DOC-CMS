@@ -1,10 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container-doc">
     <status-bar></status-bar>
     <aside class="console">
-      <div class="circle">
-        <img src="../../assets/img/me.jpg" alt="me">
-      </div>
       <menu class="navigation">
         <ul>
           <router-link :to="{path:'/index'}" tag="li">
@@ -49,7 +46,7 @@
 </script>
 <style lang="sass" rel="stylesheet/scss" scoped>
   $pictureSize: 100px;
-  .container {
+  .container-doc {
     height: 100%;
   }
 
@@ -58,19 +55,8 @@
     padding-top: 50px;
     float: left;
     height: calc(100% - 50px);
-    width: 200px;
-    background-color: transparent;
-    .circle {
-      width: $pictureSize;
-      height: $pictureSize;
-      margin: auto;
-      border-radius: 50%;
-      overflow: hidden;
-      img {
-        width: $pictureSize;
-        height: $pictureSize;
-      }
-    }
+    width: 240px;
+    border-right: 1px solid rgba(0,0,0,0.08);
     menu {
       margin: 20px 0;
       padding: 0;
@@ -89,6 +75,8 @@
           }
           &:hover {
             padding-left: 8px;
+            transition: all .2s;
+            border-left: 0 solid #42b983;
           }
         }
       }
@@ -96,7 +84,9 @@
   }
 
   div.subView {
-    margin-left: 200px;
+    margin-left: 240px;
+    width: calc(100% - 240px);
     height: calc(100% - 50px);
+    margin-top: 30px;
   }
 </style>

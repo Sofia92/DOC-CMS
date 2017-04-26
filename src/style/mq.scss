@@ -2,21 +2,21 @@ section.container {
   margin: 2em 10px;
 }
 
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 1025px) {
   header.myHeader {
-    padding: 20px 100px;
+    padding: 20px;
     margin-bottom: 60px;
     div.circle{
       float:left;
     }
   }
   .wrap,footer {
-    width: 700px;
+    width: 1000px;
     margin: 0 auto;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1024px) {
   header.myHeader {
     padding: 20px 0;
     margin-bottom: 20px;;

@@ -1,7 +1,7 @@
 <template>
   <header class="myHeader">
     <div class="circle">
-      <img src="../../assets/img/me.jpg" alt="ycwalker">
+      <img src="../../assets/img/me.png" alt="logo">
     </div>
     <ul class="menu">
       <li v-for="link in links">
@@ -32,7 +32,6 @@
       overflow: hidden;
       img {
         width: 60px;
-        height: 60px;
       }
     }
     ul {

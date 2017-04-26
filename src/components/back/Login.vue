@@ -50,7 +50,7 @@
           .then(() => {
             const date = new Date(Date.now() + 60000 * 30)
             set('user', this.name, date, '/', window.location.hostname)
-            this.$router.push({path: '/console'})
+            this.$router.push({path: '/admin'})
           })
           .catch(msg => this.info = msg)
       },
@@ -70,13 +70,14 @@
 
   section.login {
     .form {
-      width: 500px;
-      height: 400px;
+      width: 340px;
       margin: 0 auto;
+      padding: 25px 4px 4px 4px;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%,-50%);
+      border: 1px solid #eee;
       .icon i {
         transition: all 4s;
         &:hover {
