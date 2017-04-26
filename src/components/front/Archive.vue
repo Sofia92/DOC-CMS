@@ -5,12 +5,8 @@
       <ul>
         <li class="item"
             v-for="year in archive.years">
-          <p>{{year}}</p>
           <ul>
             <li v-for="article in archive.articleInYear[year]">
-              <span class="date">
-                  {{article.date | toDate}}
-              </span>
               <router-link :to="{path:'/article',query:{id:article._id}}"
                            tag="span"
                            class="title">

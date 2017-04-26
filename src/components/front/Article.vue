@@ -120,7 +120,7 @@
     padding-bottom: 160px;
     article {
       .title {
-        margin: 0.65em 0;
+        /*margin: 0.65em 0;*/
         font-size: 1.5em;
       }
       .info {
@@ -133,7 +133,6 @@
       .content {
         h2, h3, h4, h5, h6 {
           position: relative;
-          margin: 1em 0;
           &:before {
             content: "#";
             color: $green1;
@@ -149,12 +148,23 @@
             content: ""
           }
         }
-        h2, h3 {
-          font-size: 22px
+        h2 {
+          margin: 35px 0 20px;
+          font-size: 26px;
         }
-        h4, h5, h6 {
+        h3 {
+          margin: 20px 0;
+          font-size: 21px;
+        }
+        h4{
           font-size: 18px
         }
+        h5 {
+          font-size: 16px;
+        }
+        h6 {
+           font-size: 14px;
+         }
         a {
           color: $green1;
           word-break: break-all;
@@ -163,6 +173,7 @@
           margin: 2em 0;
           padding-left: 20px;
           border-left: 4px solid $green1;
+          background: rgba(220, 220, 220, 0.14);
         }
         img {
           display: block;
