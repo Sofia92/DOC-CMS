@@ -3,6 +3,9 @@
     <router-link class="text-right" :to="{name:'editor'}"
                  tag="button">新增文章
     </router-link>
+    <div v-for="(article,index) in articles">
+      <span>{{article.menu}}</span>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>

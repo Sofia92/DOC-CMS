@@ -1,8 +1,10 @@
 <template>
   <section class="editor">
-    <input class="title"
-           placeholder="标题"
-           v-model="title">
+    <div>
+      <input class="title"
+             placeholder="标题"
+             v-model="title">
+    </div>
     <div :class="inspected?'inspect':'edit'">
       <textarea v-model="content" spellcheck="false"></textarea>
       <button class="toggle"
@@ -90,11 +92,14 @@
       text-align: center;
       box-sizing: border-box;
       padding: 10px;
-      margin: 0 auto;
+      margin: 0 auto 20px;
+      width: 94%;
       height: 50px;
       display: block;
       font-size: 30px;
       color: $black1;
+      border: 1px solid #ccc;
+      border-radius: 8px;
     }
     textarea, button, article {
       box-sizing: border-box;

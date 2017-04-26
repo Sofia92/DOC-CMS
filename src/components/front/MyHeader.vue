@@ -1,7 +1,7 @@
 <template>
   <header class="myHeader">
     <div class="circle">
-      <img src="../../assets/img/me.png" alt="logo">
+      WMS Guide
     </div>
     <ul class="menu">
       <li v-for="link in links">
@@ -24,15 +24,8 @@
 <style lang="sass" rel="stylesheet/scss" scoped>
 
   header.myHeader {
-    min-height: 60px;
     .circle {
       width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      img {
-        width: 60px;
-      }
     }
     ul {
       float: right;

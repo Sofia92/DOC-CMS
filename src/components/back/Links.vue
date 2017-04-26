@@ -1,6 +1,6 @@
 <template>
   <section class="links">
-    <div class="title">链接编辑</div>
+    <div class="title" style="padding: 0 40px;">链接编辑</div>
     <table>
       <tbody>
       <tr>
@@ -11,7 +11,7 @@
         <td>
           <i class="fa fa-plus-circle"
              @click="ADD_NEW_LINK(index)"
-             v-if="links.length<4">
+             v-if="links.length<7">
           </i>
           <i class="fa fa-minus-circle"
              @click="REMOVE_LINK(index)"

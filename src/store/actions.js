@@ -31,6 +31,7 @@ export default {
     return Vue.http.get('/api/getArticles')
       .then(response => response.json())
       .then(articles => {
+        console.log(articles)
         stopLoading(commit, start)
         commit('SET_ARTICLES', articles)
       })

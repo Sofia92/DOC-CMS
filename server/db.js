@@ -7,11 +7,25 @@ const userSchema = new Schema({
   pwd: String
 })
 
-const articleSchema = new Schema({
+const menuSchema = new mongoose.Schema({
   title: String,
   date: Date,
-  content: String
+  content: String,
+  menu: []
+});
+
+const articleSchema = new Schema({
+  title: String,
+  // date: Date,
+  content: String,
+  menu: [{
+    title: String,
+    date: Date,
+    content: String,
+    menu: []
+  }]
 })
+
 
 const linkSchema = new Schema({
   name: String,
