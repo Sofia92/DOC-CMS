@@ -1,6 +1,6 @@
 <template>
   <main class="wrap">
-    <my-header></my-header>
+    <!--<my-header></my-header>-->
     <section class="archive">
       <ul>
         <li class="item"

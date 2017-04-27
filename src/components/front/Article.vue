@@ -1,29 +1,7 @@
 <template>
   <main class="wrap wrap-article">
     <my-header></my-header>
-
-    <!--<aside class="sideMenu">-->
-      <!--<menu class="navigation">-->
-        <!--<ul>-->
-          <!--<router-link :to="{path:'/index'}" tag="li">-->
-            <!--<i class="fa fa-list-ul fa-fw"></i>-->
-            <!--<span>Transfer</span>-->
-          <!--</router-link>-->
-          <!--<router-link :to="{name:'articles'}" tag="li">-->
-            <!--<i class="fa fa-list-ul fa-fw"></i>-->
-            <!--<span>Pick</span>-->
-          <!--</router-link>-->
-          <!--<router-link :to="{name:'links'}" tag="li">-->
-            <!--<i class="fa fa-list-ul fa-fw"></i>-->
-            <!--<span>Ship</span>-->
-          <!--</router-link>-->
-          <!--<router-link :to="{name:'account'}" tag="li">-->
-            <!--<i class="fa fa-list-ul fa-fw"></i>-->
-            <!--<span>Receive</span>-->
-          <!--</router-link>-->
-        <!--</ul>-->
-      <!--</menu>-->
-    <!--</aside>-->
+    <menu-bar></menu-bar>
     <section class="article">
       <article class="block">
         <div class="title">{{article.category}} - {{article.title}}</div>
@@ -37,6 +15,7 @@
   import {mapState}   from 'vuex'
   import marked       from '../../assets/js/marked.min'
   import hljs         from '../../assets/js/highlight.pack'
+  import MenuBar     from './MenuBar.vue'
   import MyHeader     from './MyHeader.vue'
 
   export default{
@@ -63,7 +42,7 @@
         return state.article
       }
     }),
-    components: {MyHeader},
+    components: {MenuBar, MyHeader},
     watch: {
       '$route': ['fetchData', 'highlight']
     }
@@ -84,6 +63,9 @@
   section.article {
     line-height: 1.6;
     padding-bottom: 160px;
+    width: calc(100% - 200px);
+    padding-left: 40px;
+    float: left;
     article {
       .title {
         /*margin: 0.65em 0;*/

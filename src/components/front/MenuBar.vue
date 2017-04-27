@@ -1,13 +1,13 @@
 <template>
-  <header class="myHeader">
+  <aside class="menuBar">
     <ul class="menu">
-      <!--<li v-for="link in links">-->
-        <!--<a :href="link.href">-->
-          <!--{{link.name}}-->
-        <!--</a>-->
-      <!--</li>-->
+      <li v-for="link in links">
+        <a :href="link.href">
+          {{link.name}}
+        </a>
+      </li>
     </ul>
-  </header>
+  </aside>
 </template>
 <script>
   import {mapState} from 'vuex'
@@ -21,7 +21,11 @@
 </script>
 <style lang="sass" rel="stylesheet/scss" scoped>
 
-  header.myHeader {
+  aside.menuBar {
+    float: left;
+    height: 100%;
+    width: 200px;
+    border-right:1px solid #eee;
     ul {
       float: right;
       margin: 0;

@@ -72,7 +72,6 @@ router.post('/api/getLinks', (req, res) => {
     if (err) {
       console.log(err)
     } else if (doc) {
-      console.log(res);
       res.send(doc)
     }
   })
