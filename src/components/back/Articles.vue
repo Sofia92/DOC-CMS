@@ -42,10 +42,10 @@
   import {mapState, mapActions} from 'vuex'
   export default{
     created(){
-      this.getArticles()
+      this.getArticlesMenus()
     },
-    computed: mapState(['articles']),
-    methods: mapActions(['getArticles', 'deleteArticle'])
+    computed: mapState(['articlesMenus']),
+    methods: mapActions(['getArticlesMenus', 'deleteArticle'])
   }
 </script>
 <style lang="sass" rel="stylesheet/scss" scoped>

@@ -32,7 +32,42 @@ export default {
       .then(response => response.json())
       .then(articles => {
         stopLoading(commit, start);
-        commit('SET_ARTICLES', articles)
+        var menuCategory = [{category: '任务'},{category: '新品录入'},{category: '入出库'},{category: '品牌方收货'},{category: '退货'}
+          ,{category: '库存查询'},{category: '货架'},{category: '订单'},{category: '物品'},{category: '发货'},{category: '运单'}];
+
+        for (var i = 0, len = articles.length; i < len; i++) {
+          for (var j = 0, lenj = menuCategory.length; j < lenj; j++) {
+            if( articles[i].category == menuCategory[j].category ){
+              let menus = menuCategory[j].submenu = [];
+              menus.push(articles[i])
+            }
+          }
+        }
+        commit('SET_ARTICLES', menuCategory)
+      })
+  },
+  getArticlesMenus: ({commit}) => {
+    const start = beginLoading(commit);
+    return Vue.http.get('/api/getArticlesMenus')
+      .then(response => response.json())
+      .then(categories => {
+        stopLoading(commit, start);
+        var menuCategory = [{category: '任务'},{category: '新品录入'},{category: '入出库'},{category: '品牌方收货'},{category: '退货'}
+          ,{category: '库存查询'},{category: '货架'},{category: '订单'},{category: '物品'},{category: '发货'},{category: '运单'}];
+
+        menuCategory.map(function(item){
+          return item.submenu = [];
+        });
+        for (var i = 0, len = categories.length; i < len; i++) {
+          for (var j = 0, lenj = menuCategory.length; j < lenj; j++) {
+            if( categories[i].category == menuCategory[j].category ){
+              var menus = menuCategory[j].submenu;
+              menus.push(categories[i])
+            }
+          }
+        }
+        console.log(menuCategory);
+        commit('SET_CATEGORIES', menuCategory)
       })
   },
   getArticle ({commit}, id) {
@@ -90,5 +125,5 @@ export default {
           return Promise.reject(response.data.msg)
         }
       })
-  }
+  },
 }
