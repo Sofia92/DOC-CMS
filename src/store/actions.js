@@ -1,20 +1,20 @@
 import Vue from 'vue'
 
 const beginLoading = commit => {
-  commit('LOADING_TOGGLE', true)
+  commit('LOADING_TOGGLE', true);
   return Date.now()
-}
+};
 
 const stopLoading = (commit, start, timeAllowed = 400) => {
-  const spareTime = timeAllowed - (Date.now() - start)
+  const spareTime = timeAllowed - (Date.now() - start);
   setTimeout(commit, spareTime > 0 ? spareTime : 0, 'LOADING_TOGGLE', false)
-}
+};
 
 const doToast = (state, commit, payload) => {
-  commit('SET_TOAST', payload)
-  commit('TOASTING_TOGGLE', true)
+  commit('SET_TOAST', payload);
+  commit('TOASTING_TOGGLE', true);
   return state.toast.promise
-}
+};
 
 Promise.prototype.finally = function (callback) {
   return this.then(
@@ -23,24 +23,24 @@ Promise.prototype.finally = function (callback) {
       throw reason
     })
   )
-}
+};
 
 export default {
   getArticles: ({commit}) => {
-    const start = beginLoading(commit)
+    const start = beginLoading(commit);
     return Vue.http.get('/api/getArticles')
       .then(response => response.json())
       .then(articles => {
-        console.log(articles)
-        stopLoading(commit, start)
+        console.log(articles);
+        stopLoading(commit, start);
         commit('SET_ARTICLES', articles)
       })
   },
   getArticle ({commit}, id) {
-    const start = beginLoading(commit)
+    const start = beginLoading(commit);
     return Vue.http.get('/api/getArticle', {params: {id}})
       .then(response => {
-        stopLoading(commit, start)
+        stopLoading(commit, start);
         commit('SET_ARTICLE', response.data)
       })
   },

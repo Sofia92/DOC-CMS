@@ -1,50 +1,45 @@
-const mongoose = require('mongoose')
-const init = require('./init.json')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const init = require('./init.json');
+const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   name: String,
   pwd: String
-})
-
-const menuSchema = new mongoose.Schema({
-  title: String,
-  date: Date,
-  content: String,
-  menu: []
 });
 
 const articleSchema = new Schema({
   title: String,
-  // date: Date,
+  date: Date,
   content: String,
-  menu: [{
-    title: String,
-    date: Date,
-    content: String,
-    menu: []
-  }]
-})
+  category: String
+});
 
+const categorySchema = new mongoose.Schema({
+  title: String,
+  date: Date,
+  content: [articleSchema],
+});
 
 const linkSchema = new Schema({
   name: String,
+  category: String,
   href: String
-})
+});
 
 const Models = {
   User: mongoose.model('User', userSchema),
   Article: mongoose.model('Article', articleSchema),
+  Category: mongoose.model('Category', categorySchema),
   Link: mongoose.model('Link', linkSchema),
   initialized: false
-}
+};
 
 const initialize = function () {
   Models.User.find(null, function (err, doc) {
     if (err) {
       console.log(err)
     } else if (!doc.length) {
-      console.log('Database opens for the first time...')
+      console.log('Database opens for the first time...');
       Promise.all(init.map(item => new Models[item.type](item).save()))
         .then(() => console.log('Initialize successfully.'))
         .catch(() => console.log('Something went wrong during initializing.'))
@@ -52,20 +47,20 @@ const initialize = function () {
       Models.initialized = true
     }
   })
-}
+};
 
-mongoose.connect('mongodb://127.0.0.1/DocCMS')
+mongoose.connect('mongodb://127.0.0.1/DocCMS');
 // mongoose.set('debug', true)
 
-const db = mongoose.connection
+const db = mongoose.connection;
 
 db.on('error', function () {
   console.log('Database connection error.')
-})
+});
 
 db.once('open', function () {
-  console.log('The database has connected.')
+  console.log('The database has connected.');
   initialize()
-})
+});
 
-module.exports = Models
+module.exports = Models;

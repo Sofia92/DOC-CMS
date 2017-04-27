@@ -1,33 +1,29 @@
 <template>
   <section class="links">
     <div class="title" style="padding: 0 40px;">链接编辑</div>
-    <table>
+    <table class="table">
       <tbody>
       <tr>
-        <th>链接名称</th>
+        <th></th>
+        <th>类目</th>
+        <th>页面</th>
         <th>链接地址</th>
       </tr>
       <tr v-for="(link,index) in links">
         <td>
-          <i class="fa fa-plus-circle"
-             @click="ADD_NEW_LINK(index)"
-             v-if="links.length<7">
-          </i>
-          <i class="fa fa-minus-circle"
-             @click="REMOVE_LINK(index)"
-             v-if="links.length>1">
-          </i>
-          <input type="text"
-                 :value="link.name"
-                 placeholder="链接名称"
-                 spellcheck="false"
+          <i class="fa fa-plus-circle" @click="ADD_NEW_LINK(index)" v-if="links.length<7"> </i>
+          <i class="fa fa-minus-circle" @click="REMOVE_LINK(index)" v-if="links.length>1"> </i>
+        </td>
+        <td>
+          <input type="text" :value="link.category" placeholder="链接分类"
+                 @input="UPDATE_LINK_CATEGORY({category: $event.target.value, index})">
+        </td>
+        <td>
+          <input type="text" :value="link.name" placeholder="链接名称" spellcheck="false"
                  @input="UPDATE_LINK_NAME({name: $event.target.value, index})">
         </td>
         <td>
-          <input type="text"
-                 :value="link.href"
-                 placeholder="链接地址"
-                 spellcheck="false"
+          <input type="text" :value="link.href" placeholder="链接地址" spellcheck="false"
                  @input="UPDATE_LINK_HREF({href: $event.target.value, index})">
         </td>
       </tr>
@@ -48,7 +44,7 @@
     computed: mapState(['links']),
     methods: {
       ...mapActions(['saveLinks', 'getLinks']),
-      ...mapMutations(['UPDATE_LINK_NAME', 'UPDATE_LINK_HREF', 'ADD_NEW_LINK', 'REMOVE_LINK'])
+      ...mapMutations(['UPDATE_LINK_NAME', 'UPDATE_LINK_HREF', 'UPDATE_LINK_CATEGORY', 'ADD_NEW_LINK', 'REMOVE_LINK'])
     }
   }
 </script>
@@ -65,7 +61,7 @@
     table {
       @include center();
       padding-top: 100px;
-      width: 500px;
+      width: 70%;
       position: relative;
       input {
         box-sizing: border-box;

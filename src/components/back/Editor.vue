@@ -15,9 +15,9 @@
       <article id="a" v-html="markedContent"></article>
     </div>
     <div class="panel">
-      <button class="saveArticle"
-              @click="save">保存
-      </button>
+      文章分类
+      <input type="text" v-model="category" placeholder="分类" spellcheck="false">
+      <button class="saveArticle" @click="save">保存 </button>
     </div>
   </section>
 </template>
@@ -62,8 +62,8 @@
           this.markedContent = marked(
             this.$store.state.article.content || '',
             {sanitize: true, smartLists: true, gfm:true, tables:true, breaks: true, smartypants:true, pedantic: true}
-          )
-          this.highlight()
+          );
+          this.highlight();
           return this.$store.state.article.content
         },
         set(value){
@@ -76,6 +76,14 @@
         },
         set(value){
           this.$store.commit('UPDATE_TITLE', value)
+        }
+      },
+      category: {
+        get(){
+          return this.$store.state.article.category
+        },
+        set(value){
+          this.$store.commit('UPDATE_CATEGORY', value)
         }
       }
     }

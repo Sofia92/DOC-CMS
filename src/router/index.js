@@ -9,7 +9,7 @@ import Editor   from '../components/back/Editor.vue'
 import Links    from '../components/back/Links.vue'
 import Account  from '../components/back/Account.vue'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   mode: 'history',
@@ -22,7 +22,6 @@ export default new Router({
       component: Console,
       children: [
         {path: '', component: Articles},
-        {path: 'articles', name: 'articles', component: Articles},
         {path: 'editor', name: 'editor', component: Editor},
         {path: 'links', name: 'links', component: Links},
         {path: 'account', name: 'account', component: Account}

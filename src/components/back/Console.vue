@@ -8,17 +8,17 @@
             <i class="fa fa-star fa-fw"></i>
             <span>总览</span>
           </router-link>
-          <router-link :to="{name:'articles'}" tag="li">
-            <i class="fa fa-file-text fa-fw"></i>
-            <span>文章</span>
+          <router-link :to="{path:''}" tag="li">
+            <i class="fa fa-edit fa-fw"></i>
+            <span>内容编辑</span>
           </router-link>
           <router-link :to="{name:'links'}" tag="li">
             <i class="fa fa-list-ul fa-fw"></i>
-            <span>链接</span>
+            <span>链接管理</span>
           </router-link>
           <router-link :to="{name:'account'}" tag="li">
             <i class="fa fa-user fa-fw"></i>
-            <span>账户</span>
+            <span>账户管理</span>
           </router-link>
         </ul>
       </menu>
@@ -55,13 +55,13 @@
     padding-top: 50px;
     float: left;
     height: calc(100% - 50px);
-    width: 240px;
+    width: 200px;
     border-right: 1px solid rgba(0,0,0,0.08);
     menu {
       margin: 20px 0;
       padding: 0;
       ul {
-        padding: 0 50px;
+        padding: 0 0 0 30px;
         > li {
           transition: all 0.4s;
           margin-top: 10px;
@@ -84,8 +84,8 @@
   }
 
   div.subView {
-    margin-left: 240px;
-    width: calc(100% - 240px);
+    margin-left: 200px;
+    width: calc(100% - 200px);
     height: calc(100% - 50px);
     margin-top: 30px;
   }

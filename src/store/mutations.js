@@ -23,16 +23,26 @@ export default {
   UPDATE_TITLE: (state, title) => {
     state.article.title = title
   },
+  UPDATE_CATEGORY: (state, category) => {
+    state.article.category = category
+  },
   UPDATE_LINK_NAME (state, {name, index}) {
-    const href = state.links[index].href
-    state.links.splice(index, 1, {name, href})
+    const href = state.links[index].href;
+    const category = state.links[index].category;
+    state.links.splice(index, 1, {name, category, href})
   },
   UPDATE_LINK_HREF (state, {href, index}) {
-    const name = state.links[index].name
-    state.links.splice(index, 1, {name, href})
+    const name = state.links[index].name;
+    const category = state.links[index].category;
+    state.links.splice(index, 1, {name, category, href})
+  },
+  UPDATE_LINK_CATEGORY (state, {category, index}) {
+    const name = state.links[index].name;
+    const href = state.links[index].href;
+    state.links.splice(index, 1, {name, category, href})
   },
   ADD_NEW_LINK (state, index) {
-    state.links.splice(index, 0, {name: '', href: ''})
+    state.links.splice(index, 0, {name: '', href: '', category: ''})
   },
   REMOVE_LINK (state, index) {
     state.links.splice(index, 1)

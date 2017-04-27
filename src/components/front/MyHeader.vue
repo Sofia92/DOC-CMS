@@ -1,6 +1,7 @@
 <template>
   <header class="myHeader">
     <ul class="menu">
+
       <li v-for="link in links">
         <a :href="link.href">
           {{link.name}}
