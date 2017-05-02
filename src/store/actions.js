@@ -15,6 +15,24 @@ const doToast = (state, commit, payload) => {
   commit('TOASTING_TOGGLE', true);
   return state.toast.promise
 };
+const pushToTree = (cfg) => {
+  Vue.http.get('/api/getCategories').then((res) => {
+    var category = res.data;
+    category.map(function (item) {
+      return item.submenu = [];
+    });
+    for (var i = 0, len = cfg.categories.length; i < len; i++) {
+      for (var j = 0, lenj = category.length; j < lenj; j++) {
+        if (cfg.categories[i].category == category[j].name) {
+          var menus = category[j].submenu;
+          menus.push(cfg.categories[i])
+        }
+      }
+    }
+    cfg.commit(cfg.mutation, category)
+  })
+};
+
 
 Promise.prototype.finally = function (callback) {
   return this.then(
@@ -48,18 +66,7 @@ export default {
       .then(response => response.json())
       .then(articles => {
         stopLoading(commit, start);
-        var menuCategory = [{category: '任务'},{category: '新品录入'},{category: '入出库'},{category: '品牌方收货'},{category: '退货'}
-          ,{category: '库存查询'},{category: '货架'},{category: '订单'},{category: '物品'},{category: '发货'},{category: '运单'}];
-
-        for (var i = 0, len = articles.length; i < len; i++) {
-          for (var j = 0, lenj = menuCategory.length; j < lenj; j++) {
-            if( articles[i].category == menuCategory[j].category ){
-              let menus = menuCategory[j].submenu = [];
-              menus.push(articles[i])
-            }
-          }
-        }
-        commit('SET_ARTICLES', menuCategory)
+        commit('SET_ARTICLES', articles)
       })
   },
   getArticlesMenus: ({commit}) => {
@@ -67,23 +74,10 @@ export default {
     return Vue.http.get('/api/getArticlesMenus')
       .then(response => response.json())
       .then(categories => {
-         Vue.http.get('/api/getCategories').then((res)=>{
-           var menuCategory = res.data;
-           menuCategory.map(function(item){
-             return item.submenu = [];
-           });
-           for (var i = 0, len = categories.length; i < len; i++) {
-             for (var j = 0, lenj = menuCategory.length; j < lenj; j++) {
-               if( categories[i].category == menuCategory[j].name ){
-                 var menus = menuCategory[j].submenu;
-                 menus.push(categories[i])
-               }
-             }
-           }
-           stopLoading(commit, start);
-           commit('SET_MENUS', menuCategory)
+          var cfg = {categories:categories, mutation:'SET_MENUS', commit:commit};
+          pushToTree(cfg);
+          stopLoading(commit, start);
         });
-      })
   },
   getArticle ({commit}, id) {
     const start = beginLoading(commit);
