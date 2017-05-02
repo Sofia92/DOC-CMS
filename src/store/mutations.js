@@ -2,8 +2,11 @@ export default {
   SET_ARTICLES: (state, articles) => {
     state.articles = articles
   },
-  SET_CATEGORIES: (state, categories) =>{
+  SET_CATEGORIES: (state, categories) => {
     state.categories = categories
+  },
+  SET_MENUS: (state, menus) =>{
+    state.articlesMenus = menus
   },
   SET_LINKS: (state, links) => {
     state.links = links
@@ -20,15 +23,22 @@ export default {
   SET_USER: (state, user) => {
     state.user = user
   },
+  /**
+   * article
+   * */
   UPDATE_CONTENT: (state, content) => {
     state.article.content = content
   },
   UPDATE_TITLE: (state, title) => {
     state.article.title = title
   },
-  UPDATE_CATEGORY: (state, category) => {
+  UPDATE_ARTICLE_CATEGORY: (state, category) => {
     state.article.category = category
   },
+
+  /**
+   * link
+   * */
   UPDATE_LINK_NAME (state, {name, index}) {
     const href = state.links[index].href;
     const category = state.links[index].category;
@@ -49,6 +59,18 @@ export default {
   },
   REMOVE_LINK (state, index) {
     state.links.splice(index, 1)
+  },
+/**
+ * category
+ * */
+  UPDATE_CATEGORY (state, {name, index}) {
+    state.categories.splice(index, 1, {name});
+  },
+  REMOVE_CATEGORY (state, index) {
+    state.categories.splice(index, 1)
+  },
+  ADD_NEW_CATEGORY (state, index) {
+    state.categories.splice(index, 0, {name: ''})
   },
   SET_TOAST (state, payload) {
     state.toast.info = payload.info

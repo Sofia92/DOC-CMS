@@ -3,6 +3,24 @@ const router = express.Router();
 const db = require('./db');
 const fn = () => {};
 
+router.get('/api/getCategories', (req, res) => {
+  db.Category.find(null, 'name', (err, doc) => {
+    if (err) {
+      console.log(err)
+    } else if (doc) {
+      res.send(JSON.stringify(doc))
+    }
+  })
+});
+router.post('/api/saveCategories', (req, res) => {
+  const categories = req.body || [];
+  db.Category.remove(null, fn);
+  const promises = categories.map(({name}) => new db.Category({name}).save());
+  Promise.all(promises)
+    .then(() => res.status(200).end())
+    .catch(() => res.status(500).end())
+});
+
 router.get('/api/getArticle', (req, res) => {
   const _id = req.query.id;
   db.Article.findOne({_id}, (err, doc) => {
@@ -28,19 +46,6 @@ router.get('/api/getArticlesMenus', (req, res) => {
     if (err) {
       console.log(err)
     } else if (doc) {
-      // let jsonDoc = JSON.stringify(doc);
-      // var menuCategory = [{category: '任务'},{category: '新品录入'},{category: '入出库'},{category: '品牌方收货'},{category: '退货'}
-      //   ,{category: '库存查询'},{category: '货架'},{category: '订单'},{category: '物品'},{category: '发货'},{category: '运单'}];
-      //
-      // for (var i = 0, len = jsonDoc.length; i < len; i++) {
-      //   for (var j = 0, lenj = menuCategory.length; j < lenj; j++) {
-      //     if( jsonDoc[i].category == menuCategory[j].category ){
-      //       let menus = menuCategory[j].submenu = [];
-      //       menus.push(jsonDoc[i])
-      //     }
-      //   }
-      // }
-      // res.send(JSON.stringify(menuCategory))
       res.send(JSON.stringify(doc))
     }
   })

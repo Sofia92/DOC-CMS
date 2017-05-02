@@ -26,6 +26,22 @@ Promise.prototype.finally = function (callback) {
 };
 
 export default {
+  getCategories: ({commit}, id)=>{
+    const start = beginLoading(commit);
+    return Vue.http.get('/api/getCategories', {params: {id}})
+      .then(response => {
+        stopLoading(commit, start);
+        commit('SET_CATEGORIES', response.data)
+      })
+  },
+  saveCategories ({state, commit}) {
+    return Vue.http.post('/api/saveCategories', state.categories)
+      .then(
+        () => doToast(state, commit, {info: '保存成功', btnNum: 1}),
+        () => doToast(state, commit, {info: '保存失败', btnNum: 1})
+      )
+      .finally(() => commit('TOASTING_TOGGLE', false))
+  },
   getArticles: ({commit}) => {
     const start = beginLoading(commit);
     return Vue.http.get('/api/getArticles')
@@ -51,23 +67,22 @@ export default {
     return Vue.http.get('/api/getArticlesMenus')
       .then(response => response.json())
       .then(categories => {
-        stopLoading(commit, start);
-        var menuCategory = [{category: '任务'},{category: '新品录入'},{category: '入出库'},{category: '品牌方收货'},{category: '退货'}
-          ,{category: '库存查询'},{category: '货架'},{category: '订单'},{category: '物品'},{category: '发货'},{category: '运单'}];
-
-        menuCategory.map(function(item){
-          return item.submenu = [];
+         Vue.http.get('/api/getCategories').then((res)=>{
+           var menuCategory = res.data;
+           menuCategory.map(function(item){
+             return item.submenu = [];
+           });
+           for (var i = 0, len = categories.length; i < len; i++) {
+             for (var j = 0, lenj = menuCategory.length; j < lenj; j++) {
+               if( categories[i].category == menuCategory[j].name ){
+                 var menus = menuCategory[j].submenu;
+                 menus.push(categories[i])
+               }
+             }
+           }
+           stopLoading(commit, start);
+           commit('SET_MENUS', menuCategory)
         });
-        for (var i = 0, len = categories.length; i < len; i++) {
-          for (var j = 0, lenj = menuCategory.length; j < lenj; j++) {
-            if( categories[i].category == menuCategory[j].category ){
-              var menus = menuCategory[j].submenu;
-              menus.push(categories[i])
-            }
-          }
-        }
-        console.log(menuCategory);
-        commit('SET_CATEGORIES', menuCategory)
       })
   },
   getArticle ({commit}, id) {

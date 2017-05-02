@@ -10,6 +10,7 @@ const store = new Vuex.Store({
   state: {
     isLoading: false,
     isToasting: false,
+    categories: [],
     articles: [],
     articlesMenus: [],
     article: {},

@@ -8,13 +8,17 @@
             <i class="fa fa-star fa-fw"></i>
             <span>总览</span>
           </router-link>
-          <router-link :to="{path:''}" tag="li">
+          <router-link :to="{path:'/admin'}" tag="li">
             <i class="fa fa-edit fa-fw"></i>
             <span>内容编辑</span>
           </router-link>
           <router-link :to="{name:'links'}" tag="li">
             <i class="fa fa-list-ul fa-fw"></i>
             <span>链接管理</span>
+          </router-link>
+          <router-link :to="{name:'categories'}" tag="li">
+            <i class="fa fa-edit fa-fw"></i>
+            <span>类目管理</span>
           </router-link>
           <router-link :to="{name:'account'}" tag="li">
             <i class="fa fa-user fa-fw"></i>

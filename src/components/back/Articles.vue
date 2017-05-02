@@ -14,10 +14,10 @@
             <th class="text-center">选项</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="(article,index) in articles">
+        <tbody v-for="(menu,index) in menu">
+          <tr v-for="(article,index) in menu.submenu">
             <td class="text-left">
-              {{article.category}}
+              {{menu.name}}
             </td>
               <router-link :to="{name:'article',query:{id:article._id}}"
                            tag="td">
@@ -42,10 +42,17 @@
   import {mapState, mapActions} from 'vuex'
   export default{
     created(){
-      this.getArticlesMenus()
+      this.getArticlesMenus();
     },
-    computed: mapState(['articlesMenus']),
-    methods: mapActions(['getArticlesMenus', 'deleteArticle'])
+    computed: {
+      ...mapState(['articles', 'articlesMenus']),
+      menu:{
+          get(){
+          return this.$store.state.articlesMenus
+        }
+      },
+    },
+    methods: mapActions(['getArticles', 'getArticlesMenus', 'deleteArticle'])
   }
 </script>
 <style lang="sass" rel="stylesheet/scss" scoped>

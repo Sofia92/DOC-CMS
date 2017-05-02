@@ -15,9 +15,7 @@ const articleSchema = new Schema({
 });
 
 const categorySchema = new mongoose.Schema({
-  title: String,
-  date: Date,
-  content: [articleSchema],
+  name: String
 });
 
 const linkSchema = new Schema({

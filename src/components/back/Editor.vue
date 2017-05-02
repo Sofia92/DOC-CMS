@@ -1,8 +1,7 @@
 <template>
   <section class="editor">
-    <div class="form-group"><input class="title"
-                                   placeholder="标题"
-                                   v-model="title"></div>
+    <div class="form-group text-center">
+      <i class="fa fa-edit fa-fw"></i><input class="title" placeholder="标题" v-model="title"></div>
     <div :class="inspected?'inspect':'edit'">
       <textarea v-model="content" spellcheck="false"></textarea>
       <button class="toggle"
@@ -16,13 +15,16 @@
     </div>
     <div class="panel">
       文章分类
-      <input type="text" v-model="category" placeholder="分类" spellcheck="false">
+      <select v-model="category">
+        <option>Select category</option>
+        <option v-for="(cat,index) in categories" :value="cat.name">{{cat.name}}</option>
+      </select>
       <button class="saveArticle" @click="save">保存 </button>
     </div>
   </section>
 </template>
 <script>
-  import {mapActions, mapMutations} from 'vuex'
+  import {mapActions, mapMutations, mapState} from 'vuex'
   import marked     from '../../assets/js/marked.min'
   import hljs       from '../../assets/js/highlight.pack'
 
@@ -34,9 +36,10 @@
       }
     },
     created(){
-      const id = this.$route.query.id
-      if (id) return this.getArticle(id)
-      this.SET_ARTICLE({date: new Date()})
+      this.getCategories();
+      const id = this.$route.query.id;
+      if (id) return this.getArticle(id);
+      this.SET_ARTICLE({date: new Date()});
     },
     updated(){
       this.highlight()
@@ -53,10 +56,11 @@
           hljs.initHighlighting()
         }, 0)
       },
-      ...mapActions(['getArticle', 'saveArticle']),
+      ...mapActions(['getArticle', 'saveArticle', 'getCategories']),
       ...mapMutations(['SET_ARTICLE'])
     },
     computed: {
+      ...mapState(['categories']),
       content: {
         get(){
           this.markedContent = marked(
@@ -83,7 +87,7 @@
           return this.$store.state.article.category
         },
         set(value){
-          this.$store.commit('UPDATE_CATEGORY', value)
+          this.$store.commit('UPDATE_ARTICLE_CATEGORY', value)
         }
       }
     }
@@ -100,7 +104,6 @@
       padding: 10px;
       margin: 0 auto;
       height: 50px;
-      display: block;
       font-size: 30px;
       color: $black1;
     }

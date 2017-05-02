@@ -10,7 +10,7 @@
               <router-link :to="{path:'/article',query:{id:article._id}}"
                            tag="span"
                            class="title">
-                {{article.title}}
+                {{article.category}}
               </router-link>
             </li>
           </ul>
