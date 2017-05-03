@@ -47,13 +47,15 @@
     methods: {
       save(){
         this.saveArticle()
-          .then(() => this.$router.push({name: 'articles'}))
+          .then(() => {
+            this.$router.push({name: 'articles'});
+            })
           .catch(err => console.log(err))
       },
       highlight(){
-        setTimeout(() => {
-          hljs.initHighlighting.called = false
-          hljs.initHighlighting()
+        setTimeout(()=>{
+          hljs.initHighlighting.called = false;
+          hljs.initHighlighting();
         }, 0)
       },
       ...mapActions(['getArticle', 'saveArticle', 'getCategories']),

@@ -42,17 +42,17 @@
   import {mapState, mapActions} from 'vuex'
   export default{
     created(){
-      this.getArticlesMenus();
+      this.getArticles();
     },
     computed: {
-      ...mapState(['articles', 'articlesMenus']),
+      ...mapState(['articles']),
       menu:{
           get(){
-          return this.$store.state.articlesMenus
+          return this.$store.state.articles
         }
       },
     },
-    methods: mapActions(['getArticles', 'getArticlesMenus', 'deleteArticle'])
+    methods: mapActions(['getArticles', 'deleteArticle'])
   }
 </script>
 <style lang="sass" rel="stylesheet/scss" scoped>

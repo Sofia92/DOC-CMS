@@ -65,8 +65,9 @@ export default {
     return Vue.http.get('/api/getArticles')
       .then(response => response.json())
       .then(articles => {
+        var cfg = {categories:articles, mutation:'SET_ARTICLES', commit:commit};
+        pushToTree(cfg);
         stopLoading(commit, start);
-        commit('SET_ARTICLES', articles)
       })
   },
   getArticlesMenus: ({commit}) => {
