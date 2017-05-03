@@ -24,7 +24,7 @@ export default {
     state.user = user
   },
   /**
-   * article
+   * single article operations
    * */
   UPDATE_CONTENT: (state, content) => {
     state.article.content = content
@@ -37,7 +37,7 @@ export default {
   },
 
   /**
-   * link
+   * link operations
    * */
   UPDATE_LINK_NAME (state, {name, index}) {
     const href = state.links[index].href;
@@ -61,7 +61,7 @@ export default {
     state.links.splice(index, 1)
   },
 /**
- * category
+ * category operations
  * */
   UPDATE_CATEGORY (state, {name, index}) {
     state.categories.splice(index, 1, {name});

@@ -68,8 +68,8 @@
     float: left;
     article {
       .title {
-        /*margin: 0.65em 0;*/
-        font-size: 1.5em;
+        font-size: 1.8em;
+        padding-top: 12px;
       }
       .info {
         color: #7f8c8d;

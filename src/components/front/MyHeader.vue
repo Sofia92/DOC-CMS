@@ -1,12 +1,10 @@
 <template>
   <header class="myHeader">
-    <ul class="menu">
-      <!--<li v-for="link in links">-->
-        <!--<a :href="link.href">-->
-          <!--{{link.name}}-->
-        <!--</a>-->
-      <!--</li>-->
-    </ul>
+    <router-link :to="{path:'/index'}"
+                 tag="button"
+                 class="home">
+      <img src="../../assets/img/logo.png" alt="logo">
+    </router-link>
   </header>
 </template>
 <script>
@@ -19,28 +17,3 @@
     computed: mapState(['links'])
   }
 </script>
-<style lang="sass" rel="stylesheet/scss" scoped>
-
-  header.myHeader {
-    ul {
-      float: right;
-      margin: 0;
-      li {
-        list-style: none;
-        display: inline-block;
-        padding: 18px 14px;
-        a {
-          color: #2c3e50;
-          &:hover {
-            text-decoration: none;
-            border-bottom: 2px solid #42b983;
-          }
-          &:active {
-            text-decoration: none;
-            border-bottom: 2px solid #42b983;
-          }
-        }
-      }
-    }
-  }
-</style>

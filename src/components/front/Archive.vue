@@ -4,13 +4,13 @@
     <section class="archive">
       <div class="item" v-for="article in articles">
         <div class="categoryName">{{article.name}}</div>
-        <ul class="article">
-          <router-link :to="{path:'/article',query:{id:article._id}}"
-                       tag="li" v-for="menu in article.submenu"
+        <div class="article">
+          <router-link :to="{path:'/article',query:{id:menu._id}}"
+                       v-for="menu in article.submenu" target="_blank"
                        class="title">
             {{menu.title}}
           </router-link>
-        </ul>
+        </div>
       </div>
     </section>
     <my-footer></my-footer>
@@ -53,14 +53,13 @@
         float: left;
         width: 25%;;
       }
-      ul {
+      .article {
         float: left;
         padding: 0;
         margin-bottom: 0;
-        li.title{
-          list-style: none;
+        a.title{
+          display: block;
           color: #42b983;
-          cursor: pointer;
           word-break: break-all;
           &:hover {
             color: #267B54;
