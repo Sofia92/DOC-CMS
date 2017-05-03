@@ -71,13 +71,6 @@
         font-size: 1.8em;
         padding-top: 12px;
       }
-      .info {
-        color: #7f8c8d;
-        margin: 1.2em 0;
-        span {
-          margin-left: 0.5rem;
-        }
-      }
       .content {
         h2, h3, h4, h5, h6 {
           position: relative;
@@ -118,7 +111,7 @@
           word-break: break-all;
         }
         blockquote {
-          margin: 2em 0;
+          margin: 1.5em 0;
           padding-left: 20px;
           border-left: 4px solid $green1;
           background: rgba(220, 220, 220, 0.14);
