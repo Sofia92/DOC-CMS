@@ -5,10 +5,10 @@
       <div class="item" v-for="article in articles">
         <div class="categoryName">{{article.name}}</div>
         <div class="article">
-          <router-link :to="{path:'/article',query:{id:menu._id}}"
-                       v-for="menu in article.submenu" target="_blank"
+          <router-link :to="{path:'/article',query:{id:submenu._id}}"
+                       v-for="submenu in article.submenu" target="_blank"
                        class="title">
-            {{menu.title}}
+            {{submenu.title}}
           </router-link>
         </div>
       </div>
