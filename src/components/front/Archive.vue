@@ -1,21 +1,17 @@
 <template>
   <main class="wrap">
-    <!--<my-header></my-header>-->
+    <my-header></my-header>
     <section class="archive">
-      <ul>
-        <li class="item"
-            v-for="year in archive.years">
-          <ul>
-            <li v-for="article in archive.articleInYear[year]">
-              <router-link :to="{path:'/article',query:{id:article._id}}"
-                           tag="span"
-                           class="title">
-                {{article.category}}
-              </router-link>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <div class="item" v-for="article in articles">
+        <div class="categoryName">{{article.name}}</div>
+        <ul class="article">
+          <router-link :to="{path:'/article',query:{id:article._id}}"
+                       tag="li" v-for="menu in article.submenu"
+                       class="title">
+            {{menu.title}}
+          </router-link>
+        </ul>
+      </div>
     </section>
     <my-footer></my-footer>
   </main>
@@ -46,26 +42,23 @@
 
   section.archive {
     padding-bottom: 160px;
-    ul {
-      padding: 0;
-      li {
-        list-style: none;
-        padding: 2px 0 0 40px;
-        p {
-          font-size: 20px;
-          color: #34495e;
-        }
-        span {
-          display: block;
-          margin: 4px 0;
-        }
-        span.date {
-          float: left;
-          width: 125px;
-          color: #7f8c8d;
-        }
-        span.title {
-          margin-left: 130px;
+    .item{
+      float: left;
+      width: 32.2%;
+      padding: 10px;
+      margin: 0.5%;
+      border-left: 2px solid #42b983;
+      background: #f9f9f9;
+      .categoryName{
+        float: left;
+        width: 25%;;
+      }
+      ul {
+        float: left;
+        padding: 0;
+        margin-bottom: 0;
+        li.title{
+          list-style: none;
           color: #42b983;
           cursor: pointer;
           word-break: break-all;
