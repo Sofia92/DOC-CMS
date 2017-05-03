@@ -31,14 +31,14 @@
       },
       highlight(){
         setTimeout(() => {
-          hljs.initHighlighting.called = false
+          hljs.initHighlighting.called = false;
           hljs.initHighlighting()
         }, 0)
       }
     },
     computed: mapState({
       article: state => {
-        state.article.content = marked(state.article.content || '')
+        state.article.content = marked(state.article.content || '');
         return state.article
       }
     }),
