@@ -51,8 +51,8 @@
     │  └─js
     │
     ├─components      vue组件
-    │  ├─back         博客控制台组件
-    │  ├─front        博客页面组件
+    │  ├─back         Admin控制台组件
+    │  ├─front        前台页面组件
     │  └─share        公共组件
     │
     ├─router          路由
@@ -76,7 +76,7 @@ mongod
 
 进入项目目录
 ```
-cd CMS-of-Blog
+cd CMS-Doc-Guide
 ```
 安装依赖
 ```
@@ -98,11 +98,3 @@ npm start
 ```
 npm run dev
 ```
-Eslint
-```$xslt
-npm run lint
-```
-
-##### Notice
-* server目录下的init.json，初始化数据放在该文件中。
-* 推荐[MongoChef](http://3t.io/mongochef/)作为mongoDB可视化管理工具
