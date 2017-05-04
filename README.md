@@ -1,7 +1,3 @@
-
-> 一个前端基于Vue.js，后端基于Node.js的博客内容管理器
-
-
 ###### 前端：Vue.js2.0
 * Vue.js
 * Vue-Router
