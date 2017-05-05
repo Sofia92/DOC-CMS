@@ -76,10 +76,10 @@ router.post('/api/login', (req, res) => {
 router.post('/api/saveArticle', (req, res) => {
   const id = req.body._id;
   const article = {
-    title: req.body.title,
+    title: req.body.title || '',
     date: req.body.date,
-    content: req.body.content,
-    category: req.body.category
+    content: req.body.content || '',
+    category: req.body.category || ''
   };
   if (id) {
     db.Article.findByIdAndUpdate(id, article, fn)

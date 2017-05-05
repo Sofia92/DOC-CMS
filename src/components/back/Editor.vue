@@ -36,13 +36,13 @@
       }
     },
     created(){
-      this.getCategories();
       const id = this.$route.query.id;
       if (id) return this.getArticle(id);
       this.SET_ARTICLE({date: new Date()});
+      this.getCategories();
     },
     updated(){
-      this.highlight()
+      this.highlight();
     },
     methods: {
       save(){
@@ -62,7 +62,6 @@
       ...mapMutations(['SET_ARTICLE'])
     },
     computed: {
-      ...mapState(['categories']),
       content: {
         get(){
           this.markedContent = marked(
@@ -91,7 +90,8 @@
         set(value){
           this.$store.commit('UPDATE_ARTICLE_CATEGORY', value)
         }
-      }
+      },
+      ...mapState(['categories'])
     }
   }
 </script>
