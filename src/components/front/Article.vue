@@ -1,7 +1,7 @@
 <template>
   <main class="wrap wrap-article">
     <my-header></my-header>
-    <menu-bar></menu-bar>
+    <!--<menu-bar></menu-bar>-->
     <section class="article">
       <article class="block">
         <div class="title">{{article.category}} - {{article.title}}</div>
